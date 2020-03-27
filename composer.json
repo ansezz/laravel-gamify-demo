@@ -7,9 +7,15 @@
         "laravel"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../laravel-gamify"
+        }
+    ],
     "require": {
         "php": "^7.2.5",
-        "ansezz/laravel-gamify": "^1.0",
+        "ansezz/laravel-gamify": "dev-master",
         "fideloper/proxy": "^4.2",
         "fruitcake/laravel-cors": "^1.0",
         "guzzlehttp/guzzle": "^6.3",

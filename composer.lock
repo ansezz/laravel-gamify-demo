@@ -4,21 +4,15 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ea2542230dfc212f62300eeffa138fb2",
+    "content-hash": "35e08c0e25530aa1e9b50d1de1108545",
     "packages": [
         {
             "name": "ansezz/laravel-gamify",
-            "version": "1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/ansezz/laravel-gamify.git",
-                "reference": "a0cffa6c1a662bbe56609ce3a317d56119ed1b0d"
-            },
+            "version": "dev-master",
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/ansezz/laravel-gamify/zipball/a0cffa6c1a662bbe56609ce3a317d56119ed1b0d",
-                "reference": "a0cffa6c1a662bbe56609ce3a317d56119ed1b0d",
-                "shasum": ""
+                "type": "path",
+                "url": "../laravel-gamify",
+                "reference": "a0cffa6c1a662bbe56609ce3a317d56119ed1b0d"
             },
             "require": {
                 "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
@@ -45,7 +39,16 @@
                     "src/helpers.php"
                 ]
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "autoload-dev": {
+                "psr-4": {
+                    "Ansezz\\Gamify\\Tests\\": "tests/"
+                }
+            },
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -58,17 +61,16 @@
             "description": "Add gamification in laravel app with reputation point and badges support",
             "homepage": "https://github.com/ansezz/laravel-gamify",
             "keywords": [
-                "Gamification",
                 "achivement",
                 "ansezz",
                 "badge",
+                "gamification",
                 "gamify",
                 "laravel",
                 "points",
                 "reputation",
                 "reward"
-            ],
-            "time": "2020-03-07T00:38:47+00:00"
+            ]
         },
         {
             "name": "asm89/stack-cors",
@@ -5878,7 +5880,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "ansezz/laravel-gamify": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
