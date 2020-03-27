@@ -10,7 +10,7 @@
     "repositories": [
         {
             "type": "path",
-            "url": "../laravel-gamify"
+            "url": "./packages/ansezz/laravel-gamify"
         }
     ],
     "require": {
