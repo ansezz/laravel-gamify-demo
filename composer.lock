@@ -4,8 +4,72 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6558f74828bca9ebecac73d90cea4b1a",
+    "content-hash": "ea2542230dfc212f62300eeffa138fb2",
     "packages": [
+        {
+            "name": "ansezz/laravel-gamify",
+            "version": "1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ansezz/laravel-gamify.git",
+                "reference": "a0cffa6c1a662bbe56609ce3a317d56119ed1b0d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ansezz/laravel-gamify/zipball/a0cffa6c1a662bbe56609ce3a317d56119ed1b0d",
+                "reference": "a0cffa6c1a662bbe56609ce3a317d56119ed1b0d",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.4.0|~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "php": ">=7.2"
+            },
+            "require-dev": {
+                "mockery/mockery": "^0.9.4 || ~1.0",
+                "orchestra/testbench": "~3.8|^4.0",
+                "phpunit/phpunit": "~8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Ansezz\\Gamify\\GamifyServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Ansezz\\Gamify\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Anass Ez-zouaine",
+                    "email": "ansezzouaine@gmail.com"
+                }
+            ],
+            "description": "Add gamification in laravel app with reputation point and badges support",
+            "homepage": "https://github.com/ansezz/laravel-gamify",
+            "keywords": [
+                "Gamification",
+                "achivement",
+                "ansezz",
+                "badge",
+                "gamify",
+                "laravel",
+                "points",
+                "reputation",
+                "reward"
+            ],
+            "time": "2020-03-07T00:38:47+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.3.0",
