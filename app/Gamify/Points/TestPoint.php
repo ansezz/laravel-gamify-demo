@@ -4,12 +4,12 @@ namespace App\Gamify\Points;
 
 use Ansezz\Gamify\BasePoint;
 
-class MyPoint extends BasePoint
+class TestPoint extends BasePoint
 {
 
     public function __invoke($badge, $subject)
     {
-        return $subject->point_sum >= 100;
+        return true;
     }
 
 }

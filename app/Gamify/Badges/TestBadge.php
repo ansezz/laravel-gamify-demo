@@ -4,7 +4,7 @@ namespace App\Gamify\Badges;
 
 use Ansezz\Gamify\BaseBadge;
 
-class MyBadge extends BaseBadge
+class TestBadge extends BaseBadge
 {
 
     public function __invoke($badge, $subject)

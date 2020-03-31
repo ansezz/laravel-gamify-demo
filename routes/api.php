@@ -14,6 +14,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['namespace' => 'API', 'middleware' => 'auth:api'], function () {
+
+    Route::group(['middleware' => 'auth:api'], function () {
+        Route::get('profile', 'UserControllers@profile');
+        Route::get('profile/points', 'UserControllers@points');
+        Route::get('profile/badges', 'UserControllers@badges');
+
+        Route::get('achieve/point/{point}', 'GamifyController@achievePoint');
+        Route::get('undo/point/{point}', 'GamifyController@undoPoint');
+    });
+
+    Route::get('points', 'GamifyController@points');
+    Route::get('badges', 'GamifyController@badges');
+
 });
+
+
