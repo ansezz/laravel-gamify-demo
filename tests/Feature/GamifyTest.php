@@ -6,7 +6,9 @@ use Ansezz\Gamify\Badge;
 use Ansezz\Gamify\GamifyGroup;
 use Ansezz\Gamify\GamifyLevel;
 use Ansezz\Gamify\Point;
+use App\Gamify\Badges\FirstBadge;
 use App\Gamify\Badges\MyBadge;
+use App\Gamify\Badges\PostCreated;
 use App\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -34,15 +36,30 @@ class GamifyTest extends TestCase
             'type' => 'badge',
         ]);
 
-        $gamify_level = factory(GamifyLevel::class)->create();
 
-        $badges = factory(Badge::class, 2)->create([
-            'gamify_group_id' => $group_badge->id,
-            'gamify_level_id' => $gamify_level->id,
-            'class'           => MyBadge::class,
+        $gamify_level1 = GamifyLevel::create([
+            'name' => 'First level',
         ]);
 
-        $this->assertCount(2, $badges);
+        $gamify_level2 = GamifyLevel::create([
+            'name' => 'Second level',
+        ]);
+
+        $badge1 = factory(Badge::class)->create([
+            'name'            => 'Post Created Level 1',
+            'gamify_group_id' => $group_badge->id,
+            'gamify_level_id' => $gamify_level1->id,
+            'class'           => PostCreated::class,
+        ]);
+
+
+        $badge2 = factory(Badge::class)->create([
+            'name'            => 'Post Created level 2',
+            'gamify_group_id' => $group_badge->id,
+            'gamify_level_id' => $gamify_level2->id,
+            'class'           => PostCreated::class,
+        ]);
+
 
         // Create points
         $group_point = factory(GamifyGroup::class)->create([
@@ -54,9 +71,6 @@ class GamifyTest extends TestCase
             'point'           => 100,
         ]);
 
-        $this->assertCount(2, $points);
-
-        // User accomplish an point
 
         $user->achievePoint($points->first());
         $user->achievePoint($points->last());
