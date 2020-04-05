@@ -11,7 +11,7 @@ class User extends Authenticatable
 {
     use Notifiable, Gamify;
 
-    protected $appends = ['point_sum'];
+    protected $appends = ['achieved_points'];
 
     /**
      * The attributes that are mass assignable.

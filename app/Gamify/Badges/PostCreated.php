@@ -13,9 +13,9 @@ class PostCreated extends BaseBadge
      *
      * @return bool
      */
-    public function firstLevel($badge, $subject)
+    public function beginner($badge, $subject)
     {
-        return $subject->point_sum >= 100;
+        return $subject->achieved_points >= 100;
     }
 
     /**
@@ -24,8 +24,19 @@ class PostCreated extends BaseBadge
      *
      * @return bool
      */
-    public function secondLevel($badge, $subject)
+    public function intermediate($badge, $subject)
     {
-        return $subject->point_sum >= 200;
+        return $subject->achieved_points >= 200;
+    }
+
+    /**
+     * @param $badge
+     * @param $subject
+     *
+     * @return bool
+     */
+    public function advanced($badge, $subject)
+    {
+        return $subject->achieved_points >= 300;
     }
 }

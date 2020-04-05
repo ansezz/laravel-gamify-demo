@@ -26,7 +26,6 @@ class GamifyTest extends TestCase
     public function testExample()
     {
 
-
         // Create user
         /** @var User $user */
         $user = factory(User::class)->create();
@@ -37,26 +36,25 @@ class GamifyTest extends TestCase
         ]);
 
 
-        $gamify_level1 = GamifyLevel::create([
-            'name' => 'First level',
-        ]);
-
-        $gamify_level2 = GamifyLevel::create([
-            'name' => 'Second level',
-        ]);
-
         $badge1 = factory(Badge::class)->create([
-            'name'            => 'Post Created Level 1',
+            'name'            => 'Post Created beginner',
             'gamify_group_id' => $group_badge->id,
-            'gamify_level_id' => $gamify_level1->id,
+            'level'           => config('gamify.badge_levels.beginner'),
             'class'           => PostCreated::class,
         ]);
 
 
         $badge2 = factory(Badge::class)->create([
-            'name'            => 'Post Created level 2',
+            'name'            => 'Post Created intermediate',
             'gamify_group_id' => $group_badge->id,
-            'gamify_level_id' => $gamify_level2->id,
+            'level'           => config('gamify.badge_levels.intermediate'),
+            'class'           => PostCreated::class,
+        ]);
+
+        $badge2 = factory(Badge::class)->create([
+            'name'            => 'Post Created advanced',
+            'gamify_group_id' => $group_badge->id,
+            'level'           => config('gamify.badge_levels.advanced'),
             'class'           => PostCreated::class,
         ]);
 
@@ -81,18 +79,16 @@ class GamifyTest extends TestCase
         $user->achievePoint($point1);
         $user->achievePoint($point2);
 
-        // $user->achieveBadge($badges->first());
-        // $user->achieveBadge($badges->last());
 
-        // $user->undoBadge($badges->first());
-        // $user->undoPoint($points->first());
+        $this->assertEquals(300, $user->achieved_points);
+        $this->assertCount(3, $user->badges);
 
+        $user->undoPoint($point1);
+        // Refresh data
+        $user->refresh();
 
-        $this->assertEquals(300, $user->point_sum);
+        $this->assertEquals(200, $user->achieved_points);
         $this->assertCount(2, $user->badges);
-        // Send Event
-
-        // check if user has is level Archived
 
     }
 }
