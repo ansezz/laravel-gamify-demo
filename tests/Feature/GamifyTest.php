@@ -66,14 +66,20 @@ class GamifyTest extends TestCase
             'type' => 'point',
         ]);
 
-        $points = factory(Point::class, 2)->create([
+        $point1 = factory(Point::class)->create([
             'gamify_group_id' => $group_point->id,
             'point'           => 100,
         ]);
 
+        $point2 = factory(Point::class)->create([
+            'gamify_group_id' => $group_point->id,
+            'point'           => 0,
+            'class'           => \App\Gamify\Points\PostCreated::class,
+        ]);
 
-        $user->achievePoint($points->first());
-        $user->achievePoint($points->last());
+
+        $user->achievePoint($point1);
+        $user->achievePoint($point2);
 
         // $user->achieveBadge($badges->first());
         // $user->achieveBadge($badges->last());
@@ -82,7 +88,7 @@ class GamifyTest extends TestCase
         // $user->undoPoint($points->first());
 
 
-        $this->assertEquals(200, $user->point_sum);
+        $this->assertEquals(300, $user->point_sum);
         $this->assertCount(2, $user->badges);
         // Send Event
 
