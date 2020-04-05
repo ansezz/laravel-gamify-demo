@@ -25,7 +25,6 @@ class GamifyTest extends TestCase
      */
     public function testExample()
     {
-
         // Create user
         /** @var User $user */
         $user = factory(User::class)->create();
