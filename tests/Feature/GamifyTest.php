@@ -50,7 +50,7 @@ class GamifyTest extends TestCase
             'class'           => PostCreated::class,
         ]);
 
-        $badge2 = factory(Badge::class)->create([
+        $badge3 = factory(Badge::class)->create([
             'name'            => 'Post Created advanced',
             'gamify_group_id' => $group_badge->id,
             'level'           => config('gamify.badge_levels.advanced'),
@@ -75,6 +75,7 @@ class GamifyTest extends TestCase
         ]);
 
 
+        // Achieve point
         $user->achievePoint($point1);
         $user->achievePoint($point2);
 
@@ -82,12 +83,32 @@ class GamifyTest extends TestCase
         $this->assertEquals(300, $user->achieved_points);
         $this->assertCount(3, $user->badges);
 
+        // Undo Point
         $user->undoPoint($point1);
         // Refresh data
         $user->refresh();
 
         $this->assertEquals(200, $user->achieved_points);
         $this->assertCount(2, $user->badges);
+
+
+        $user->achievePoint($point1);
+
+        // Achieve badge
+        $user->syncBadge($badge3);
+        $user->refresh();
+
+        $this->assertEquals(300, $user->achieved_points);
+        $this->assertCount(3, $user->badges);
+
+
+        // Rest Point
+        $user->resetPoint();
+        $user->refresh();
+
+        $this->assertEquals(0, $user->achieved_points);
+        $this->assertCount(0, $user->badges);
+
 
     }
 }
