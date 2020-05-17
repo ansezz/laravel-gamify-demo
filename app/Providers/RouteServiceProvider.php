@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use Ansezz\Gamify\Badge;
+use Ansezz\Gamify\Point;
+use App\User;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +36,11 @@ class RouteServiceProvider extends ServiceProvider
         //
 
         parent::boot();
+
+        Route::model('user', User::class);
+        Route::model('badge', Badge::class);
+        Route::model('point', Point::class);
+
     }
 
     /**
